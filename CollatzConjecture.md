@@ -1,35 +1,43 @@
 
 
 ```python
+#Variables to be used globally
 global number
-global Number
+global intNum
+
+#Ask user for an integer to perform the sequence
 number = input('Enter a positive integer: ')
 
+#This checks that the value is a valid integer, and repeats until valid integer is entered
 def isInt(number):
     try:
         int(number)
         return False
     except ValueError:
-        return True
-while isInt(number)==True:
-    number = input('That\'s not an integer, try again: ')
-else: Number = int(number)
+        return True                #Returns as True if ValueError flag is raised
+while isInt(number)==True:         #Loop to ask for integer, if ValueError flag is raised
+    number = input('That is not an integer, try again: ')
+else: intNum = int(number)         #Ensures number is saved as Integer
 
-def collatz(Number):
-    #global number
+    #The collatz sequence
+def collatz(intNum):
+    #initialize the counter
     counter = 0  
-    while Number > 1:
-        if Number % 2 == 0:
-            Number = Number//2
-            print(Number)
-        else:
-            Number = 3 * Number + 1
-            print(Number)
-        counter +=1
-    print (number + ' resolved to 1 in ' + str(counter) + ' steps.')
-    return 1
     
-   
+    #start of loop
+    while intNum > 1:
+        if intNum % 2 == 0:        #If the integer is even, divides by 2
+            intNum = intNum//2
+            print(intNum)          #Prints out the number
+        else:
+            intNum = 3 * intNum + 1 #When integer is odd
+            print(intNum)
+        counter +=1                 #Counter keeps track of iterations until 1 is reached
+        
+    #outputs the original number and the steps taken to resolve to one    
+    print (number + ' resolved to 1 in ' + str(counter) + ' steps.')
+       
+#Calls the functions   
 isInt(number)
 collatz(Number)
 ```
@@ -161,10 +169,3 @@ collatz(Number)
     1
     1028 resolved to 1 in 124 steps.
     
-
-
-
-
-    1
-
-
